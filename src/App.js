@@ -9,13 +9,6 @@ import { AppContex } from './state/app.context';
 function App() {
   const { getAllEmployees } = useContext(AppContex)
 
-  // const getAllEmployees = async () => {
-  //   const employees = await getEmployees();
-  //   setAllEmployees(employees);
-  //   const total = Math.ceil(employees.length / rowPerPage)
-  //   setTotalPage(total);
-  // };
-
   useEffect(() => {
     getAllEmployees();
   }, []);
