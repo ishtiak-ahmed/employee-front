@@ -3,7 +3,7 @@ import { addEmployee } from "../api";
 import { AppContex } from "../state/app.context";
 
 export const AddEmploye = () => {
-  const [employee, setEmployee] = useState({});
+  const [employee, setEmployee] = useState({ firstName: "", lastName: "", eamil: "" });
   const { setAllEmployees } = useContext(AppContex);
 
   const handleInput = (e) => {
@@ -12,21 +12,25 @@ export const AddEmploye = () => {
   };
 
   const validateData = () => {
-    if (!employee.firstName.length) return { error: true, message: "First name is empty" };
-    if (!employee.lastName.length) return { error: true, message: "Last name is empty" };
-    if (!employee.email.length) return { error: true, message: "Email is empty" };
-    return true;
-  };
-
-  const showError = () => {
-    console.log("showing error");
+    const errorsData = [];
+    if (!employee.firstName.length) errorsData.push("First name is empty");
+    if (!employee?.lastName?.length) errorsData.push("Last name is empty");
+    const validEmail = String(employee.email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+    if (!validEmail) errorsData.push("Email is not valid");
+    return errorsData;
   };
 
   const handleAdd = async () => {
     console.log("adding employee");
     const validation = validateData();
-    if (validation.error) {
-      showError();
+    console.log(validation);
+    if (validation.length) {
+      const error = validation.join(", ");
+      alert(error);
     } else {
       const res = await addEmployee(employee);
       if (res) {
