@@ -1,0 +1,238 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+header,
+section {
+  max-width: 900px;
+  padding: 1em;
+  margin: auto;
+  color: #333;
+  background-color: #cfd8dc;
+  @media (max-width: 660px) {
+    padding: 0.5em;
+  }
+}
+
+header {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+  }
+    text-align: center;
+  h1 {
+    font-size: 48px;
+    font-weight: 600;
+    text-transform: capitalize;
+    @media (max-width: 660px) {
+      font-size: 28px;
+    }
+  }
+}
+
+.add_employee {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-gap: 1em;
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 660px) {
+    grid-template-columns: 1fr;
+  }
+  > div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 0.5em;
+    width: 100%;
+    align-items: center;
+    @media (max-width: 660px) {
+      grid-template-columns: 100px 1fr;
+    }
+    input {
+      width: 100%;
+      padding: 0.5em;
+      border-radius: 5px;
+      border: 1px solid #333;
+      outline: none;
+      background-color: #cfd8dc;
+    }
+    button {
+      padding: 0.5em 1em;
+      background-color: #00796b;
+      color: #fff;
+      width: 120px;
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid #2e7d32;
+      &:disabled {
+        background-color: #81c784;
+        color: #333;
+      }
+    }
+  }
+}
+
+.upload_csv {
+  > div {
+    width: 200px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    padding: 5px;
+    input {
+      padding: 0.5em;
+    }
+  }
+  h2 {
+    margin-bottom: 0.5em;
+  }
+  p {
+    opacity: 0;
+    display: none;
+    margin-top: 0.5em;
+    transition: all 0.5s ease;
+    &.info {
+      opacity: 1;
+      display: block;
+      color: orangered;
+      font-weight: 600;
+      padding: 5px;
+    }
+  }
+}
+
+.employee_table {
+  h3 {
+    margin: 0.5em 0;
+    font-size: 20px;
+  }
+  .summary {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1em;
+    h3 {
+      margin: 0;
+      padding: 0;
+    }
+  }
+  .table {
+    font-size: 18px;
+    @media (max-width: 660px) {
+      font-size: 13px;
+    }
+    border: 1px solid #333;
+    &_action {
+      display: grid;
+      grid-template-columns: 200px 100px;
+      grid-gap: .5em;
+      padding: 1em;
+    }
+    &_header {
+      display: grid;
+      grid-template-columns: 100px 1fr 1fr 2fr;
+      font-weight: 600;
+      border-top: 1px solid #333;
+      border-bottom: 1px solid #333;
+      padding: 6px 10px;
+      @media (max-width: 660px) {
+        padding: 4px;
+        grid-template-columns: 30px 1fr 1fr 2fr;
+      }
+    }
+    &_body > div {
+      display: grid;
+      grid-template-columns: 100px 1fr 1fr 2fr;
+      border-bottom: 1px solid #333;
+      padding: 6px 10px;
+      @media (max-width: 660px) {
+        padding: 4px;
+        grid-template-columns: 30px 1fr 1fr 2fr;
+      }
+    }
+    &_pagination {
+      max-width: 500px;
+      display: grid;
+      grid-template-columns: 50px 50px 100px 50px 50px;
+      padding: .5em;
+      grid-gap: .5em;
+      align-items: center;
+      text-align: center;
+    }
+    
+  }
+}
+
+button {
+      padding: 3px 9px;
+      outline: none;
+      background-color: #00796b;
+      color: #fff;
+      font-size: 14px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      &.primary {
+        background-color: dodgerblue;
+      }
+      &:disabled {
+        opacity: 0.5;
+      }
+      p {
+        padding: 0px 1em;
+      }
+    }
+
+.mail_modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,.7);
+  > div {
+    max-width: 900px;
+    margin: 1em auto;
+    padding: 1em;
+    background-color: #90A4AE;
+    border-radius: 5px;
+    .header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      height: auto;
+      gap: 1em;
+      h3 {
+        margin: 0;
+      }
+    }
+    p {
+      margin-top: 0.5em;
+      padding: 0.3em 0;
+    }
+    input, textarea {
+      width: 100%;
+      max-width: 700px;
+      padding: 8px;
+      border-radius: 5px;
+      outline: none;
+      border: 1px solid #333;
+      background-color: #B0BEC5;
+    }
+    button {
+      padding: 5px 1em;
+      margin-top: 1em;
+    }
+  }
+}
+
+button.danger {
+  padding: 3px 5px;
+  background-color: #37474F;
+  color: #fff;
+}
